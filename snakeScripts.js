@@ -170,9 +170,11 @@ function update() {
 			if (highScore !== null) {
 				if (score > highScore) {
 					localStorage.setItem("highScore", score);
+					highScore = score;
 				}
 			} else {
 				localStorage.setItem("highScore", score);
+				highScore = score;
 			}
 
 			setFood();
@@ -225,8 +227,7 @@ function draw() {
 
 	ctx.fillStyle = "turquoise";
 	ctx.fillText("SCORE: " + score, 10, canvas.height - 10);
-	ctx.fillText("HIGH SCORE: " + localStorage.getItem("highScore"), 410, canvas.height - 10);
-	// ctx.fillText("INFO: " + checkStorage(), 230, canvas.height - 10);
+	ctx.fillText("HIGH SCORE: " + highScore, 410, canvas.height - 10);
 }
 
 main();
