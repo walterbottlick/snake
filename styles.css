@@ -1,8 +1,10 @@
 canvas {
 	display: block;
 	position: absolute;
-	border: 1px solid #000;
+	border: 10px solid turquoise;
 	margin: auto;
+	padding: 2px;
+	background-color: black;
 	top: 0;
 	bottom: 0;
 	right: 0;
