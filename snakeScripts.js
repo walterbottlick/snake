@@ -191,7 +191,19 @@ function draw() {
 					ctx.fillStyle = "#000";
 					break;
 				case SNAKE:
-					ctx.fillStyle = "#fff";
+					if (score >= 50) {
+						ctx.fillStyle = "purple";
+					} else if (score >= 40 && score < 50) {
+						ctx.fillStyle = "blue";
+					} else if (score >= 30 && score < 40) {
+						ctx.fillStyle = "red";
+					} else if (score >= 20 && score < 30) {
+						ctx.fillStyle = "yellow";
+					} else if (score >= 10 && score < 20) {
+						ctx.fillStyle = "green";
+					} else {
+						ctx.fillStyle = "#fff";
+					}
 					break;
 				case FRUIT:
 					ctx.fillStyle = "#f00";
@@ -201,7 +213,7 @@ function draw() {
 		}
 	}
 
-	ctx.fillStyle = "#fff";
+	ctx.fillStyle = "turquoise";
 	ctx.fillText("SCORE: " + score, 10, canvas.height - 10);
 }
 
