@@ -83,6 +83,8 @@ function setFood() {
 // Game Objects
 var canvas, ctx, keystate, frames, score;
 
+localStorage.setItem("highScore", 0);
+
 
 function main() {
 	canvas = document.createElement("canvas");
@@ -165,6 +167,11 @@ function update() {
 		if (grid.get(nx, ny) === FRUIT) {
 			var tail = {x:nx, y:ny};
 			score++;
+			
+			if (score > localStorage.getItem("highScore")) {
+				localStorage.setItem("highScore", score);
+			}
+
 			setFood();
 		} else {
 			var tail = snake.remove();
@@ -215,6 +222,7 @@ function draw() {
 
 	ctx.fillStyle = "turquoise";
 	ctx.fillText("SCORE: " + score, 10, canvas.height - 10);
+	ctx.fillText("HIGH SCORE: " + localStorage.getItem("highScore"), 410, canvas.height - 10);
 }
 
 main();
