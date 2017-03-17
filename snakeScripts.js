@@ -81,9 +81,7 @@ function setFood() {
 
 
 // Game Objects
-var canvas, ctx, keystate, frames, score;
-
-localStorage.setItem("highScore", 0);
+var canvas, ctx, keystate, frames, score, highScore;
 
 
 function main() {
@@ -110,6 +108,7 @@ function main() {
 
 function init() {
 	score = 0;
+	highScore = localStorage.getItem("highScore");
 
 	grid.init(EMPTY, COLS, ROWS);
 
@@ -168,7 +167,11 @@ function update() {
 			var tail = {x:nx, y:ny};
 			score++;
 			
-			if (score > localStorage.getItem("highScore")) {
+			if (highScore !== null) {
+				if (score > highScore) {
+					localStorage.setItem("highScore", score);
+				}
+			} else {
 				localStorage.setItem("highScore", score);
 			}
 
@@ -223,6 +226,7 @@ function draw() {
 	ctx.fillStyle = "turquoise";
 	ctx.fillText("SCORE: " + score, 10, canvas.height - 10);
 	ctx.fillText("HIGH SCORE: " + localStorage.getItem("highScore"), 410, canvas.height - 10);
+	// ctx.fillText("INFO: " + checkStorage(), 230, canvas.height - 10);
 }
 
 main();
